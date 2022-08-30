@@ -15,10 +15,11 @@ Just run the tool and you can get started with your new projects without having 
 - vscode settings
 - tsconfig
 - github actions ci workflow
+  - includes caching of `pnpm`-store. If you are using `yarn` or `npm`, modifications might be required ot cache the correct paths.
 
 ## 🛠 How to use it?
 
-1. Run the binary:
+1. Run the binary _(any package manager works)_:
 
 ```bash
 pnpm dlx good-defaults
