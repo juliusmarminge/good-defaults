@@ -4,6 +4,8 @@
 
 `Good Defaults` is a CLI tool that helps you set up your development environment for Typescript. It is a simple way to get started with a new project if you are unfamiliar with different configurations.
 
+Just run the tool and you can get started with your new projects without having to worry about all the boring stuff!
+
 > **Note:** I made this project to suit my own needs and the configurations provided might not suit your need.
 
 ## 🧩 What's included?
