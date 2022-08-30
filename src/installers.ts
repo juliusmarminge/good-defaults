@@ -24,7 +24,6 @@ const config: Record<Package, ConfigObject> = {
     scripts: {
       lint: "eslint . --cache --cache-strategy content --ignore-path .gitignore",
       format: "prettier --write '**/*.{ts,tsx,cjs,mjs,json,md,mdx}'",
-      check: "pnpm lint && tsc --noEmit",
     },
     deps: {
       eslint: "^8.23.0",
@@ -85,6 +84,10 @@ const getInstallerFn = (pkg: Package): InstallerFn => {
 
     // Add scripts
     if (addScripts) {
+      if (!pkgJson.scripts) {
+        Object.assign(pkgJson, { scripts: {} });
+      }
+
       Object.entries(scripts).forEach(([name, script]) => {
         pkgJson.scripts[name] = script;
       });
@@ -92,6 +95,10 @@ const getInstallerFn = (pkg: Package): InstallerFn => {
 
     // Add package dependencies
     if (installMode) {
+      if (!pkgJson.devDependencies) {
+        Object.assign(pkgJson, { devDependencies: {} });
+      }
+
       Object.entries(deps).forEach(([pkg, version]) => {
         pkgJson.devDependencies[pkg] = version;
       });
