@@ -84,7 +84,7 @@ const getInstallerFn = (pkg: Package): InstallerFn => {
       // HANDLING OF SPECIAL CASE FROM LINE 56
       if (file.origin === "github/workflows/ci-") {
         const pkgMgr = getUserPkgManager();
-        origin = `${origin}-${pkgMgr}.yml`;
+        origin = `${origin}${pkgMgr}.yml`;
       }
 
       fs.copySync(origin, dest);
