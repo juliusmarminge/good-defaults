@@ -29,6 +29,7 @@
     "pub": "pnpm build && pnpm publish"
   },
   "devDependencies": {
+    "@types/inquirer": "^9.0.1",
     "@types/node": "^18.7.14",
     "@typescript-eslint/eslint-plugin": "^5.36.0",
     "@typescript-eslint/parser": "^5.36.0",
@@ -39,5 +40,10 @@
     "prettier": "^2.7.1",
     "tsup": "^6.2.3",
     "typescript": "^4.8.2"
+  },
+  "dependencies": {
+    "chalk": "^5.0.1",
+    "inquirer": "^9.1.0",
+    "ora": "^6.1.2"
   }
 }
