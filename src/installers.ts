@@ -4,14 +4,21 @@ import path from "path";
 import type { Package } from ".";
 import { getRootPath } from "./utils/getRootPath.js";
 
-// Files should be relative to project root
-const filesToCopy: Record<Package, string[]> = {
-  tsconfig: ["tsconfig.json"],
-  eslint: [".eslintrc"],
-  prettier: [".prettierrc"],
-  gitignore: [".gitignore"],
-  vscode: [".vscode/settings.json", ".vscode/extensions.json"],
-  "gh-actions": [".github/workflows/main.yml"],
+// Files must not start with `.` or they won't be found by the CLI
+// `origin` - path relative to `configs` directory
+// `dest` - path relative to destination project root
+const filesToCopy: Record<Package, { origin: string; dest: string }[]> = {
+  tsconfig: [{ origin: "tsconfig.json", dest: "tsconfig.json" }],
+  eslint: [{ origin: "eslint.config.json", dest: ".eslintrc" }],
+  prettier: [{ origin: "prettier.config.json", dest: ".prettierrc" }],
+  gitignore: [{ origin: "gitignore", dest: ".gitignore" }],
+  vscode: [
+    { origin: "vscode/settings.json", dest: ".vscode/settings.json" },
+    { origin: "vscode/extensions.json", dest: ".vscode/extensions.json" },
+  ],
+  "gh-actions": [
+    { origin: "github/workflows/ci.yml", dest: ".github/workflows/ci.yml" },
+  ],
 };
 
 const installerFn = (pkg: Package) => {
@@ -19,8 +26,8 @@ const installerFn = (pkg: Package) => {
   const root = getRootPath();
   return (baseDir: string) => {
     files.forEach((file) => {
-      const origin = path.resolve(root, file);
-      const dest = path.resolve(baseDir, file);
+      const origin = path.resolve(root, file.origin);
+      const dest = path.resolve(baseDir, file.dest);
       copyFileSync(origin, dest);
     });
   };
