@@ -1,0 +1,19 @@
+{
+  "name": "@good-defaults/example",
+  "version": "0.5.3",
+  "author": "Julius Marminge <julius0216@outlook.com> (https://jumr.dev)",
+  "scripts": {
+    "format": "prettier --write '**/*.{ts,tsx,cjs,mjs,json,md,mdx}'",
+    "lint": "eslint . --cache --cache-strategy content --ignore-path .gitignore"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.36.0",
+    "@typescript-eslint/parser": "^5.36.0",
+    "eslint": "^8.23.0",
+    "eslint-config-prettier": "^4.2.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "prettier": "^2.7.1",
+    "typescript": "^4.8.0"
+  }
+}

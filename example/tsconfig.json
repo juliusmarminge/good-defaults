@@ -1,17 +1,11 @@
 {
   "include": ["src"],
-  "exclude": ["dist", "example"],
   "compilerOptions": {
     /* LANGUAGE COMPILATION OPTIONS */
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "nodenext",
     "resolveJsonModule": true,
-
-    /* EMIT RULES */
-    "outDir": "./dist",
-    "noEmit": true,
-    "removeComments": true,
 
     /* TYPE CHECKING RULES */
     "strict": true,
