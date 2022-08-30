@@ -17,7 +17,7 @@ Just run the tool and you can get started with your new projects without having 
 
 ## 🛠 How to use it?
 
-1. Run the binary _(any package manager works)_:
+1. Run the binary _(currently only works on pnpm)_:
 
 ```bash
 pnpm dlx good-defaults
