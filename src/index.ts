@@ -5,6 +5,7 @@ import ora from "ora";
 
 import { installers } from "./installers.js";
 import { getUserPkgManager } from "./utils/getPkgManager.js";
+import { getVersion } from "./utils/getVersion.js";
 
 const packages = [
   "tsconfig",
@@ -18,7 +19,7 @@ export type Package = typeof packages[number];
 const title = () => {
   console.log(
     chalk.cyanBright(`
-  Good Defaults
+  Good Defaults (v${getVersion()})
   -------------
   Let's setup your project with some good defaults.
   `),
@@ -76,6 +77,8 @@ const main = async () => {
   const { packages, installMode, addScripts } = await cli();
 
   const baseDir = process.cwd();
+
+  console.log("");
 
   packages.forEach((pkg) => {
     const spinner = ora("Setting up " + pkg).start();
