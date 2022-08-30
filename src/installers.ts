@@ -1,4 +1,4 @@
-import { copyFileSync } from "fs";
+import fs from "fs-extra";
 import path from "path";
 
 import type { Package } from ".";
@@ -29,7 +29,7 @@ const installerFn = (pkg: Package) => {
     files.forEach((file) => {
       const origin = path.resolve(configs, file.origin);
       const dest = path.resolve(baseDir, file.dest);
-      copyFileSync(origin, dest);
+      fs.copySync(origin, dest);
     });
   };
 };

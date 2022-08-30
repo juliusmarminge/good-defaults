@@ -1,6 +1,6 @@
 {
   "name": "good-defaults",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "A CLI tool to generate good defaults for your project",
   "author": "Julius Marminge <julius0216@outlook.com> (https://jumr.dev)",
   "license": "MIT",
@@ -29,6 +29,7 @@
     "pub": "pnpm build && pnpm publish"
   },
   "devDependencies": {
+    "@types/fs-extra": "^9.0.13",
     "@types/inquirer": "^9.0.1",
     "@types/node": "^18.7.14",
     "@typescript-eslint/eslint-plugin": "^5.36.0",
@@ -43,6 +44,7 @@
   },
   "dependencies": {
     "chalk": "^5.0.1",
+    "fs-extra": "^10.1.0",
     "inquirer": "^9.1.0",
     "ora": "^6.1.2"
   }
