@@ -27,4 +27,4 @@ pnpm dlx good-defaults
 ## References
 
 - A lot of the CLI tooling is based on [`create-t3-app`](https://github.com/t3-oss/create-t3-app).
-- Thank's [@joshuakgoldberg](https://github.com/JoshuaKGoldberg) for inspiring on the [`.eslintrc`](./.eslintrc)
+- Thanks [@joshuakgoldberg](https://github.com/JoshuaKGoldberg) for inspiring on the [`.eslintrc`](./.eslintrc)
