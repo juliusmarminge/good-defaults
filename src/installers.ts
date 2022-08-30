@@ -24,9 +24,10 @@ const filesToCopy: Record<Package, { origin: string; dest: string }[]> = {
 const installerFn = (pkg: Package) => {
   const files = filesToCopy[pkg];
   const root = getRootPath();
+  const configs = path.join(root, "configs");
   return (baseDir: string) => {
     files.forEach((file) => {
-      const origin = path.resolve(root, file.origin);
+      const origin = path.resolve(configs, file.origin);
       const dest = path.resolve(baseDir, file.dest);
       copyFileSync(origin, dest);
     });
