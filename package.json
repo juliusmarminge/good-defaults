@@ -10,9 +10,11 @@
   },
   "keywords": [
     "eslint",
+    "prettier",
     "vscode",
     "cli-tool",
-    "typescript"
+    "typescript",
+    "github-actions"
   ],
   "bin": {
     "good-defaults": "./dist/index.js"

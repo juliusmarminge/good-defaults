@@ -12,6 +12,7 @@
 - prettier
 - vscode settings
 - tsconfig
+- github actions ci workflow
 
 ## How to use it?
 
@@ -23,6 +24,14 @@ pnpm dlx good-defaults
 
 2. Select the configurations you would like to have.
 3. Done 🚀
+
+## Contributing
+
+As mentioned above, I made this to suit my own needs. However, I am happy to be convinced for other configurations.
+
+If you have something you'd like to add or modify, please open an issue or pull request.
+
+💖💖💖
 
 ## References
 
