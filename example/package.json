@@ -1,6 +1,6 @@
 {
   "name": "@good-defaults/example",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "author": "Julius Marminge <julius0216@outlook.com> (https://jumr.dev)",
   "scripts": {
     "format": "prettier --write '**/*.{ts,tsx,cjs,mjs,json,md,mdx}'",

@@ -88,6 +88,7 @@ const main = async () => {
 
   if (installMode) {
     const pkgMgr = getUserPkgManager();
+    console.log("");
     const spinner = ora(`Running "${pkgMgr} install"...`).start();
     execSync(`${pkgMgr} install`, { cwd: baseDir });
     spinner.succeed("Dependencies installed");
