@@ -1,13 +1,14 @@
 import chalk from "chalk";
+import { execSync } from "child_process";
 import inquirer from "inquirer";
 import ora from "ora";
 
 import { installers } from "./installers.js";
+import { getUserPkgManager } from "./utils/getPkgManager.js";
 
 const packages = [
   "tsconfig",
-  "eslint",
-  "prettier",
+  "eslint+prettier",
   "gitignore",
   "vscode",
   "gh-actions",
@@ -26,9 +27,11 @@ const title = () => {
 
 interface CliRes {
   packages: typeof packages;
+  installMode: boolean;
+  addScripts: boolean;
 }
 const cli = async (): Promise<CliRes> => {
-  const res = await inquirer.prompt<Pick<CliRes, "packages">>({
+  const pkg = await inquirer.prompt<Pick<CliRes, "packages">>({
     name: "packages",
     type: "checkbox",
     message: "What configurations would you like me to setup?",
@@ -38,7 +41,25 @@ const cli = async (): Promise<CliRes> => {
     })),
   });
 
-  return res;
+  const install = await inquirer.prompt<Pick<CliRes, "installMode">>({
+    name: "installMode",
+    type: "confirm",
+    message: "Would you like me to install the necessary the dependencies too?",
+    default: true,
+  });
+
+  const scripts = await inquirer.prompt<Pick<CliRes, "addScripts">>({
+    name: "addScripts",
+    type: "confirm",
+    message: "Would you like me to add the necessary scripts too?",
+    default: true,
+  });
+
+  return {
+    packages: pkg.packages,
+    installMode: install.installMode,
+    addScripts: scripts.addScripts,
+  };
 };
 
 const farewell = () => {
@@ -52,15 +73,22 @@ const farewell = () => {
 
 const main = async () => {
   title();
-  const { packages } = await cli();
+  const { packages, installMode, addScripts } = await cli();
 
   const baseDir = process.cwd();
 
   packages.forEach((pkg) => {
     const spinner = ora("Setting up " + pkg).start();
-    installers[pkg](baseDir);
+    installers[pkg](baseDir, installMode, addScripts);
     spinner.succeed("Setup successful for " + pkg);
   });
+
+  if (installMode) {
+    const pkgMgr = getUserPkgManager();
+    const spinner = ora(`Running "${pkgMgr} install"...`).start();
+    execSync(`${pkgMgr} install`, { cwd: baseDir });
+    spinner.succeed("Dependencies installed");
+  }
 
   farewell();
 };

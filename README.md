@@ -10,12 +10,10 @@ Just run the tool and you can get started with your new projects without having 
 
 ## 🧩 What's included?
 
-- eslint
-- prettier
-- vscode settings
-- tsconfig
-- github actions ci workflow
-  - includes caching of `pnpm`-store. If you are using `yarn` or `npm`, modifications might be required ot cache the correct paths.
+- ESLint + Prettier
+- VSCode Settings & Extensions
+- TSConfig
+- GitHub Actions CI Workflow w/ Caching
 
 ## 🛠 How to use it?
 
