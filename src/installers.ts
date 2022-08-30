@@ -3,6 +3,7 @@ import path from "path";
 import sortPackageJson from "sort-package-json";
 
 import type { Package } from ".";
+import { getUserPkgManager } from "./utils/getPkgManager.js";
 import { getRootPath } from "./utils/getRootPath.js";
 
 interface ConfigObject {
@@ -50,7 +51,10 @@ const config: Record<Package, ConfigObject> = {
   },
   "gh-actions": {
     files: [
-      { origin: "github/workflows/ci.yml", dest: ".github/workflows/ci.yml" },
+      // SPECIAL CASE DEPENDING ON PKG MANAGER
+      // CAN SEPARATE INSTALLERS IF THINGS GETS COMPLEX
+      // BUT THIS IS OK FOR NOW
+      { origin: "github/workflows/ci-", dest: ".github/workflows/ci.yml" },
     ],
     scripts: {},
     deps: {},
@@ -74,8 +78,15 @@ const getInstallerFn = (pkg: Package): InstallerFn => {
   return (baseDir, installMode, addScripts) => {
     // Copy configuration files
     files.forEach((file) => {
-      const origin = path.resolve(configs, file.origin);
+      let origin = path.resolve(configs, file.origin);
       const dest = path.resolve(baseDir, file.dest);
+
+      // HANDLING OF SPECIAL CASE FROM LINE 56
+      if (file.origin === "github/workflows/ci-") {
+        const pkgMgr = getUserPkgManager();
+        origin = `${origin}-${pkgMgr}.yml`;
+      }
+
       fs.copySync(origin, dest);
     });
 
