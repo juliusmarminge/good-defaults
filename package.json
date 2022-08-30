@@ -1,6 +1,6 @@
 {
   "name": "good-defaults",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "A CLI tool to generate good defaults for your project",
   "author": "Julius Marminge <julius0216@outlook.com> (https://jumr.dev)",
   "license": "MIT",
