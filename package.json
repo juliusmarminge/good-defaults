@@ -1,0 +1,42 @@
+{
+  "name": "good-defaults",
+  "version": "0.1.0",
+  "description": "A CLI tool to generate good defaults for your project",
+  "author": "Julius Marminge <julius0216@outlook.com> (https://jumr.dev)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/juliusmarminge/better-defaults.git"
+  },
+  "keywords": [
+    "eslint",
+    "vscode",
+    "cli-tool",
+    "typescript"
+  ],
+  "bin": {
+    "good-defaults": "./dist/index.js"
+  },
+  "type": "module",
+  "packageManager": "pnpm@7.9.5",
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --minify",
+    "dev": "pnpm build --onSuccess 'node dist/index.js'",
+    "lint": "eslint . --cache --cache-strategy content --ignore-path .gitignore",
+    "format": "prettier --write '**/*.{ts,json,md}'",
+    "check": "pnpm lint && pnpm format:check && tsc",
+    "clean": "rm -rf node_modules dist"
+  },
+  "devDependencies": {
+    "@types/node": "^18.7.14",
+    "@typescript-eslint/eslint-plugin": "^5.36.0",
+    "@typescript-eslint/parser": "^5.36.0",
+    "eslint": "^8.23.0",
+    "eslint-config-prettier": "^4.2.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "prettier": "^2.7.1",
+    "tsup": "^6.2.3",
+    "typescript": "^4.8.2"
+  }
+}

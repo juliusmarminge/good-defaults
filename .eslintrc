@@ -1,0 +1,21 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:@typescript-eslint/strict",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "project": ["./tsconfig.json"]
+  },
+  "plugins": ["@typescript-eslint", "simple-import-sort"],
+  "rules": {
+    // Off-by-default rules we like being on
+    "simple-import-sort/exports": "error",
+    "simple-import-sort/imports": "error"
+  },
+  "root": true
+}
