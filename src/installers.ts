@@ -1,19 +1,37 @@
+import { copyFileSync } from "fs";
+import path from "path";
+
 import type { Package } from ".";
+import { getRootPath } from "./utils/getRootPath.js";
 
-const tsconfigInstaller = () => {};
+// Files should be relative to project root
+const filesToCopy: Record<Package, string[]> = {
+  tsconfig: ["tsconfig.json"],
+  eslint: [".eslintrc"],
+  prettier: [".prettierrc"],
+  gitignore: [".gitignore"],
+  vscode: [".vscode/settings.json", ".vscode/extensions.json"],
+  "gh-actions": [".github/workflows/main.yml"],
+};
 
-const eslintInstaller = () => {};
+const installerFn = (pkg: Package) => {
+  const files = filesToCopy[pkg];
+  const root = getRootPath();
+  return (baseDir: string) => {
+    files.forEach((file) => {
+      const origin = path.resolve(root, file);
+      const dest = path.resolve(baseDir, file);
+      copyFileSync(origin, dest);
+    });
+  };
+};
 
-const prettierInstaller = () => {};
-
-const vscodeInstaller = () => {};
-
-const ghActionsInstaller = () => {};
-
-export const installers: Record<Package, () => void> = {
-  tsconfig: tsconfigInstaller,
-  eslint: eslintInstaller,
-  prettier: prettierInstaller,
-  vscode: vscodeInstaller,
-  "gh-actions": ghActionsInstaller,
+type InstallerFn = (baseDir: string) => void;
+export const installers: Record<Package, InstallerFn> = {
+  tsconfig: installerFn("tsconfig"),
+  eslint: installerFn("eslint"),
+  prettier: installerFn("prettier"),
+  gitignore: installerFn("gitignore"),
+  vscode: installerFn("vscode"),
+  "gh-actions": installerFn("gh-actions"),
 };

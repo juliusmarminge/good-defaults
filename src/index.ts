@@ -8,6 +8,7 @@ const packages = [
   "tsconfig",
   "eslint",
   "prettier",
+  "gitignore",
   "vscode",
   "gh-actions",
 ] as const;
@@ -43,6 +44,7 @@ const cli = async (): Promise<CliRes> => {
 const farewell = () => {
   console.log(
     chalk.cyanBright(`
+  -------------
   Thank you for using Good Defaults!
   `),
   );
@@ -52,9 +54,11 @@ const main = async () => {
   title();
   const { packages } = await cli();
 
+  const baseDir = process.cwd();
+
   packages.forEach((pkg) => {
     const spinner = ora("Setting up " + pkg).start();
-    installers[pkg]();
+    installers[pkg](baseDir);
     spinner.succeed("Setup successful for " + pkg);
   });
 
