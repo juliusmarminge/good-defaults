@@ -1,6 +1,6 @@
 {
   "name": "good-defaults",
-  "version": "0.5.9",
+  "version": "0.5.10",
   "description": "A CLI tool to generate good defaults for your project",
   "author": "Julius Marminge <julius0216@outlook.com> (https://jumr.dev)",
   "license": "MIT",
@@ -26,9 +26,9 @@
   },
   "scripts": {
     "build": "tsup",
-    "dev": "pnpm build --onSuccess 'node dist/index.js'",
+    "dev": "pnpm build --onSuccess \"node dist/index.js\"",
     "lint": "eslint . --cache --cache-strategy content --ignore-path .gitignore",
-    "format": "prettier --write '**/*.{ts,tsx,cjs,mjs,json,md,mdx}'",
+    "format": "prettier --write \"**/*.{ts,tsx,cjs,mjs,json,md,mdx}\"",
     "check": "pnpm lint && tsc",
     "clean": "rm -rf node_modules dist",
     "pub": "pnpm build && pnpm publish"
