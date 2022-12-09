@@ -1,11 +1,11 @@
-import chalk from "chalk";
+// import chalk from "chalk";
 import { execSync } from "child_process";
 import inquirer from "inquirer";
 import ora from "ora";
 
 import { installers } from "./installers.js";
 import { getUserPkgManager } from "./utils/getPkgManager.js";
-import { getVersion } from "./utils/getVersion.js";
+// import { getVersion } from "./utils/getVersion.js";
 
 const packages = [
   "tsconfig",
@@ -16,15 +16,15 @@ const packages = [
 ] as const;
 export type Package = typeof packages[number];
 
-const title = () => {
-  console.log(
-    chalk.cyanBright(`
-  Good Defaults (v${getVersion()})
-  -------------
-  Let's setup your project with some good defaults.
-  `),
-  );
-};
+// const title = () => {
+//   console.log(
+//     chalk.cyanBright(`
+//   Good Defaults (v${getVersion()})
+//   -------------
+//   Let's setup your project with some good defaults.
+//   `),
+//   );
+// };
 
 interface CliRes {
   packages: Package[];
@@ -63,17 +63,17 @@ const cli = async (): Promise<CliRes> => {
   };
 };
 
-const farewell = () => {
-  console.log(
-    chalk.cyanBright(`
-  -------------
-  Thank you for using Good Defaults!
-  `),
-  );
-};
+// const farewell = () => {
+//   console.log(
+//     chalk.cyanBright(`
+//   -------------
+//   Thank you for using Good Defaults!
+//   `),
+//   );
+// };
 
 const main = async () => {
-  title();
+  // title();
   const { packages, installMode, addScripts } = await cli();
 
   const baseDir = process.cwd();
@@ -94,7 +94,7 @@ const main = async () => {
     spinner.succeed("Dependencies installed");
   }
 
-  farewell();
+  // farewell();
 };
 
 void main();
