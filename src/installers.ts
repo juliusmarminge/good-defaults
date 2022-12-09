@@ -15,7 +15,7 @@ const config: Record<Package, ConfigObject> = {
   tsconfig: {
     files: [{ origin: "tsconfig.json", dest: "tsconfig.json" }],
     scripts: {},
-    deps: { typescript: "^4.8.0" },
+    deps: { typescript: "^4.9.3" },
   },
   "eslint+prettier": {
     files: [
@@ -27,13 +27,13 @@ const config: Record<Package, ConfigObject> = {
       format: "prettier --write '**/*.{ts,tsx,cjs,mjs,json,md,mdx}'",
     },
     deps: {
-      eslint: "^8.23.0",
-      prettier: "^2.7.1",
-      "@typescript-eslint/eslint-plugin": "^5.36.0",
-      "@typescript-eslint/parser": "^5.36.0",
+      eslint: "^8.28.0",
+      prettier: "^2.8.1",
+      "@typescript-eslint/eslint-plugin": "^5.46.0",
+      "@typescript-eslint/parser": "^5.46.0",
       "eslint-config-prettier": "^4.2.1",
       "eslint-plugin-prettier": "^4.2.1",
-      "eslint-plugin-simple-import-sort": "^7.0.0",
+      "eslint-plugin-simple-import-sort": "^8.0.0",
     },
   },
   gitignore: {
