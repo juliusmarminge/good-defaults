@@ -70,7 +70,7 @@ type InstallerFn = (
   installMode: boolean,
   addScripts: boolean,
 ) => void;
-const getInstallerFn = (pkg: Package): InstallerFn => {
+function getInstallerFn(pkg: Package): InstallerFn {
   const { files, scripts, deps } = config[pkg];
   const root = getRootPath();
   const configs = path.join(root, "configs");
@@ -118,7 +118,7 @@ const getInstallerFn = (pkg: Package): InstallerFn => {
     const sorted = sortPackageJson(pkgJson);
     fs.writeFileSync(pkgJsonPath, JSON.stringify(sorted, null, 2), "utf-8");
   };
-};
+}
 
 export const installers: Record<Package, InstallerFn> = {
   tsconfig: getInstallerFn("tsconfig"),

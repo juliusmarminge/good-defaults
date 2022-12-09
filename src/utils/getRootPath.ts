@@ -1,7 +1,7 @@
 import path from "path";
 import { fileURLToPath } from "url";
 
-export const getRootPath = () => {
+export function getRootPath() {
   // __filename - path to dist/index.js
   const __filename = fileURLToPath(import.meta.url);
 
@@ -10,4 +10,4 @@ export const getRootPath = () => {
 
   // return path to root
   return path.join(distPath, "../");
-};
+}

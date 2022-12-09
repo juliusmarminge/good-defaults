@@ -16,7 +16,7 @@ const packages = [
 ] as const;
 export type Package = typeof packages[number];
 
-const title = () => {
+function printTitle() {
   console.log(
     chalk.cyanBright(`
   Good Defaults (v${getVersion()})
@@ -24,14 +24,14 @@ const title = () => {
   Let's setup your project with some good defaults.
   `),
   );
-};
+}
 
 interface CliRes {
   packages: Package[];
   installMode: boolean;
   addScripts: boolean;
 }
-const cli = async (): Promise<CliRes> => {
+async function cli(): Promise<CliRes> {
   const pkg = await inquirer.prompt<Pick<CliRes, "packages">>({
     name: "packages",
     type: "checkbox",
@@ -61,19 +61,19 @@ const cli = async (): Promise<CliRes> => {
     installMode: install.installMode,
     addScripts: scripts.addScripts,
   };
-};
+}
 
-const farewell = () => {
+function printFarewell() {
   console.log(
     chalk.cyanBright(`
   -------------
   Thank you for using Good Defaults!
   `),
   );
-};
+}
 
-const main = async () => {
-  title();
+async function main() {
+  printTitle();
   const { packages, installMode, addScripts } = await cli();
 
   const baseDir = process.cwd();
@@ -94,7 +94,7 @@ const main = async () => {
     spinner.succeed("Dependencies installed");
   }
 
-  farewell();
-};
+  printFarewell();
+}
 
 void main();

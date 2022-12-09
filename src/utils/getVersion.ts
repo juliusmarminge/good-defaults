@@ -5,7 +5,7 @@ import path from "path";
 
 import { getRootPath } from "./getRootPath.js";
 
-export const getVersion = () => {
+export function getVersion() {
   const rootPath = getRootPath();
   const packageJsonPath = path.join(rootPath, "package.json");
 
@@ -14,4 +14,4 @@ export const getVersion = () => {
   );
 
   return packageJsonContent.version as string;
-};
+}
