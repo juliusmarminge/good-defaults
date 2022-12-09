@@ -1,12 +1,12 @@
 {
   "name": "good-defaults",
-  "version": "0.5.5",
+  "version": "0.5.8",
   "description": "A CLI tool to generate good defaults for your project",
   "author": "Julius Marminge <julius0216@outlook.com> (https://jumr.dev)",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/juliusmarminge/better-defaults.git"
+    "url": "https://github.com/juliusmarminge/good-defaults.git"
   },
   "keywords": [
     "eslint",
@@ -16,13 +16,16 @@
     "typescript",
     "github-actions"
   ],
+  "type": "module",
+  "exports": "./dist/index.js",
   "bin": {
     "good-defaults": "./dist/index.js"
   },
-  "type": "module",
-  "packageManager": "pnpm@7.9.5",
+  "engines": {
+    "node": ">=16"
+  },
   "scripts": {
-    "build": "tsup src/index.ts --format esm --minify",
+    "build": "tsup",
     "dev": "pnpm build --onSuccess 'node dist/index.js'",
     "lint": "eslint . --cache --cache-strategy content --ignore-path .gitignore",
     "format": "prettier --write '**/*.{ts,tsx,cjs,mjs,json,md,mdx}'",
@@ -31,24 +34,22 @@
     "pub": "pnpm build && pnpm publish"
   },
   "devDependencies": {
-    "@types/fs-extra": "^9.0.13",
     "@types/inquirer": "^9.0.1",
     "@types/node": "^18.7.14",
-    "@typescript-eslint/eslint-plugin": "^5.36.0",
-    "@typescript-eslint/parser": "^5.36.0",
-    "eslint": "^8.23.0",
+    "@typescript-eslint/eslint-plugin": "^5.46.0",
+    "@typescript-eslint/parser": "^5.46.0",
+    "eslint": "^8.29.0",
     "eslint-config-prettier": "^4.2.1",
     "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-simple-import-sort": "^7.0.0",
-    "prettier": "^2.7.1",
-    "tsup": "^6.2.3",
-    "typescript": "^4.8.2"
+    "eslint-plugin-simple-import-sort": "^8.0.0",
+    "prettier": "^2.8.1",
+    "tsup": "^6.5.0",
+    "typescript": "^4.9.3"
   },
   "dependencies": {
-    "chalk": "^5.0.1",
-    "fs-extra": "^10.1.0",
-    "inquirer": "^9.1.0",
+    "chalk": "^5.2.0",
+    "inquirer": "^9.1.4",
     "ora": "^6.1.2",
-    "sort-package-json": "^1.57.0"
+    "sort-package-json": "^2.1.0"
   }
 }

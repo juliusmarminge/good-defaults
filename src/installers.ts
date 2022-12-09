@@ -1,8 +1,8 @@
-import fs from "fs-extra";
+import fs from "fs";
 import path from "path";
 import sortPackageJson from "sort-package-json";
 
-import type { Package } from ".";
+import type { Package } from "./index.js";
 import { getUserPkgManager } from "./utils/getPkgManager.js";
 import { getRootPath } from "./utils/getRootPath.js";
 
@@ -87,11 +87,11 @@ const getInstallerFn = (pkg: Package): InstallerFn => {
         origin = `${origin}${pkgMgr}.yml`;
       }
 
-      fs.copySync(origin, dest);
+      fs.copyFileSync(origin, dest);
     });
 
     const pkgJsonPath = path.resolve(baseDir, "package.json");
-    const pkgJson = fs.readJsonSync(pkgJsonPath);
+    const pkgJson = JSON.parse(fs.readFileSync(pkgJsonPath, "utf-8"));
 
     // Add scripts
     if (addScripts) {
@@ -116,9 +116,7 @@ const getInstallerFn = (pkg: Package): InstallerFn => {
     }
 
     const sorted = sortPackageJson(pkgJson);
-    fs.writeJsonSync(pkgJsonPath, sorted, {
-      spaces: 2,
-    });
+    fs.writeFileSync(pkgJsonPath, JSON.stringify(sorted, null, 2), "utf-8");
   };
 };
 

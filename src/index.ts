@@ -27,7 +27,7 @@ const title = () => {
 };
 
 interface CliRes {
-  packages: typeof packages;
+  packages: Package[];
   installMode: boolean;
   addScripts: boolean;
 }

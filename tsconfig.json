@@ -1,5 +1,5 @@
 {
-  "include": ["src"],
+  "include": ["src", "tsup.config.ts"],
   "exclude": ["dist", "example"],
   "compilerOptions": {
     /* LANGUAGE COMPILATION OPTIONS */
