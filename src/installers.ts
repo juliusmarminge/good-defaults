@@ -27,7 +27,7 @@ const config: Record<Package, ConfigObject> = {
       format: "prettier --write '**/*.{ts,tsx,cjs,mjs,json,md,mdx}'",
     },
     deps: {
-      eslint: "^8.28.0",
+      eslint: "^8.29.0",
       prettier: "^2.8.1",
       "@typescript-eslint/eslint-plugin": "^5.46.0",
       "@typescript-eslint/parser": "^5.46.0",
